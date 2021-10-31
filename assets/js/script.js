@@ -30,8 +30,11 @@ function generatePassword() {
   if(passwordParameters.numeric) parameterArr.push("numeric");
   if(passwordParameters.special) parameterArr.push("special");
   
-  // If no parameters were chose, do nothing
-  if(parameterArr.length == 0) return passwordParameters.password;
+  // If no parameters were chose, alert user and don't change existing displayed password
+  if(parameterArr.length == 0) {
+    window.alert("Please choose at least one character type to include in your password!");
+    return passwordParameters.password;
+  }
 
   // Everything so far is valid, clear previous password
   passwordParameters.password = "";
@@ -73,9 +76,6 @@ function generatePassword() {
 }
 
 function getPasswordParameters() {
-  // window.alert
-  // window.confirm
-  // window.prompt
   let invalidResponse = true;
 
   while(invalidResponse) {
