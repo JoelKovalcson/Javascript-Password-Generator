@@ -1,5 +1,3 @@
-// Assignment code here
-
 // Special Character String (Space not included since it frequently isn't supported)
 var specialCharacters = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
@@ -13,10 +11,12 @@ var passwordParameters = {
   password: ""
 }
 
+// Random int [0-max)
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+// Generates password based on user input
 function generatePassword() {
   // Get password parameters from user
   let validParameters = getPasswordParameters();
@@ -49,11 +49,11 @@ function generatePassword() {
     type = parameterArr[getRandomInt(parameterArr.length)];
 
     switch (type) {
-      // 97 is starting ascii value of 'a'
+      // 97 is starting ASCII value of 'a'
       case "lowercase":
         char = String.fromCharCode(97 + getRandomInt(26));
         break;
-      // 65 is starting ascii value of 'A'
+      // 65 is starting ASCII value of 'A'
       case "uppercase":
         char = String.fromCharCode(65 + getRandomInt(26));
         break;
@@ -61,7 +61,7 @@ function generatePassword() {
       case "numeric":
         char = getRandomInt(10);
         break;
-      // Could do more complicated ascii value management here, or just randomly index the special character array
+      // Could do more complicated ASCII value management here, but chose to randomly index a special character array instead
       case "special":
         char = specialCharacters[getRandomInt(specialCharacters.length)];
         break;
@@ -75,6 +75,7 @@ function generatePassword() {
   return passwordParameters.password;
 }
 
+// Gets user input for the password to be created
 function getPasswordParameters() {
   let invalidResponse = true;
 
@@ -126,7 +127,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
